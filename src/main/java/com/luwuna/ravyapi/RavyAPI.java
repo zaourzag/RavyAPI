@@ -1,5 +1,6 @@
 package com.luwuna.ravyapi;
 
+import com.luwuna.ravyapi.exceptions.UnauthorizedRouteException;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -117,14 +118,41 @@ public class RavyAPI{
     public String getTrust(@NotNull String id){
         return null;
     }
-    public String  getWhiteListProvider(@NotNull String id){
+    public String  getWhiteListProvidercyb(@NotNull String id){
         return null;
     }
     public String  getWhiteListReason(@NotNull String id){
 
         return null;
     }
-    public String getReputation(@NotNull String id){
+
+    /**
+     * Gets the trust based on Discordrep.com
+     * @param id
+     * @return ReputationEntry
+     * @throws UnauthorizedRouteException if the token has no access
+     *
+     */
+    public ReputationEntry getReputation(@NotNull String id){
+        r = new Request.Builder()
+                .url("https://ravy.org/api/v1/users/" + id + "/pronouns")
+                .header("Authorization", token)
+                .get().build();
+        Response res;
+        JSONObject obj ;
+        try {
+            res = c.newCall(r).execute();
+            obj = new JSONObject(res.body().string());
+            try {
+                return new ReputationEntry(obj);
+            }catch (UnauthorizedRouteException e){
+                e.printStackTrace();
+                return null;
+            }
+        }catch (Exception e){
+            res = null;
+            obj = null;
+        }
         return null;
     }
     public boolean isSentinelVerified(@NotNull String id){
