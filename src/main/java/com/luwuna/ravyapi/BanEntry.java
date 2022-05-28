@@ -12,11 +12,7 @@ public class BanEntry {
     public boolean isBanned(){
         System.out.println(obj.get("bans"));
        JSONArray a = ((JSONArray) obj.get("bans"));
-        if(a.isEmpty()) {
-            return false;
-        }else{
-            return true;
-        }
+        return !a.isEmpty();
     }
     public String getReason(){
         return obj.get("reason").toString();
