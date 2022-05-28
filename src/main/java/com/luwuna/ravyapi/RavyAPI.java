@@ -20,7 +20,7 @@ public class RavyAPI{
     Request r;
     OkHttpClient c = new OkHttpClient();
     String token;
-    public RavyAPI(@NotNull String RavyToken, String... id){
+    public RavyAPI(@NotNull String RavyToken){
         token = RavyToken;
         r = new Request.Builder()
                 .url("https://ravy.org/api/v1/tokens/@current")
@@ -62,8 +62,11 @@ public class RavyAPI{
         return scopes;
     }
 
-
-    public BanEntry getUserBans(String id){
+    /**
+     * Gets the bans of a user. Returns a BanEntry object
+     * Use .getBans()
+     */
+    public ExtensiveUserInfo getBanInfo(String id){
         r = new Request.Builder()
                 .url("https://ravy.org/api/v1/users/" + id + "/bans")
                 .header("Authorization", token)
@@ -73,30 +76,52 @@ public class RavyAPI{
         try {
             res = c.newCall(r).execute();
             obj = new JSONObject(res.body().string());
-            return new BanEntry(obj);
+            return new ExtensiveUserInfo(obj);
+        }catch (Exception e){
+            e.printStackTrace();
+            res = null;
+            obj = null;
+        }
+        return null;
+    }
+
+    public String getGuildBans(){
+        String reason;
+        return null;
+    }
+
+    /**
+     *
+     * @param id
+     * @return pronouns if successful, null if no access
+     */
+    public String getPronouns(@NotNull String id){
+        r = new Request.Builder()
+                .url("https://ravy.org/api/v1/users/" + id + "/pronouns")
+                .header("Authorization", token)
+                .get().build();
+        Response res;
+        JSONObject obj ;
+        try {
+            res = c.newCall(r).execute();
+            obj = new JSONObject(res.body().string());
+            return obj.get("pronouns").toString();
         }catch (Exception e){
             res = null;
             obj = null;
         }
         return null;
     }
-    public String getGuildBans(){
-        String reason;
+    public String getTrust(@NotNull String id){
         return null;
     }
-    public String getPronouns(String... id){
+    public String  getWhiteList(@NotNull String id){
         return null;
     }
-    public String getTrust(String... id){
+    public String getReputation(@NotNull String id){
         return null;
     }
-    public String  getWhiteList(String... id){
-        return null;
-    }
-    public String getReputation(String... id){
-        return null;
-    }
-    public boolean isSentinelVerified(String... id){
+    public boolean isSentinelVerified(@NotNull String id){
         return false;
     }
 

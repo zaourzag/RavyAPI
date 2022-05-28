@@ -1,29 +1,25 @@
 package com.luwuna.ravyapi;
 
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class BanEntry {
-    JSONObject obj;
+     private JSONObject obj;
+
+
     public BanEntry(JSONObject obj){
-        this.obj = obj;
-    }
-    public boolean isBanned(){
-        System.out.println(obj.get("bans"));
-       JSONArray a = ((JSONArray) obj.get("bans"));
-        return !a.isEmpty();
+    this.obj = obj;
     }
     public String getReason(){
-        return obj.get("reason").toString();
+        return (String) obj.get("reason");
     }
     public String getReasonKey(){
-        return obj.get("reasonKey").toString();
+        return (String) obj.get("reasonkey");
     }
     public String getModerator(){
-        return obj.get("moderator").toString();
+        return (String) obj.get("moderator");
     }
     public String getProvider(){
-        return obj.get("provider").toString();
+        return (String) obj.get("provider");
     }
 }
