@@ -29,10 +29,12 @@ public class RavyAPI{
         try {
            Response res =  c.newCall(r).execute();
            System.out.println(res.code());
-           if(res.code() == 401){
-               throw new IllegalArgumentException("Invalid token!");
+           switch(res.code()){
+               case 401:
+               case 403:
+                   throw new IllegalArgumentException("Invalid token!");
            }
-        //   System.out.println(res.body().string());
+
         }catch (Exception e){
             e.printStackTrace();
         }
