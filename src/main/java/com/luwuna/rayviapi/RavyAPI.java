@@ -15,6 +15,7 @@ public class RavyAPI{
      * Creates the basic API object. A ravy token can be obtained via Aero's server
      * @param RavyToken: the token to login with
      * @throws IllegalArgumentException if the token is not a Ravy token
+     *
      */
     Request r;
     OkHttpClient c = new OkHttpClient();
