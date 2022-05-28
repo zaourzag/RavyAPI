@@ -1,4 +1,4 @@
 out/
 .idea
-.idea/compiler.xml
-.idea/discord.xml
+.src/main/java/com/luwuna/ravyapi/tmp.java
+*.class

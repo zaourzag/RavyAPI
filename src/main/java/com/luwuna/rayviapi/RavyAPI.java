@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.luwuna.rayviapi.Types.EntryType;
 
 public class RavyAPI{
     /**
@@ -20,7 +21,7 @@ public class RavyAPI{
     Request r;
     OkHttpClient c = new OkHttpClient();
     String token;
-    public RavyAPI(@NotNull String RavyToken){
+    public RavyAPI(@NotNull String RavyToken, String... id){
         token = RavyToken;
         r = new Request.Builder()
                 .url("https://ravy.org/api/v1/tokens/@current")
@@ -61,22 +62,22 @@ public class RavyAPI{
         });
         return scopes;
     }
-    public String getUserBans(@NotNull String id){
+    public String getBans(String id, EntryType entryType){
         return null;
     }
-    public String getPronouns(@NotNull String id){
+    public String getPronouns(String... id){
         return null;
     }
-    public String getTrust(@NotNull String id){
+    public String getTrust(String... id){
         return null;
     }
-    public String  getWhiteList(@NotNull String id){
+    public String  getWhiteList(String... id){
         return null;
     }
-    public String getReputation(@NotNull String id){
+    public String getReputation(String... id){
         return null;
     }
-    public boolean isSentinelVerified(@NotNull String id){
+    public boolean isSentinelVerified(String... id){
         return false;
     }
 
