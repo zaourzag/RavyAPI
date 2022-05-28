@@ -117,7 +117,11 @@ public class RavyAPI{
     public String getTrust(@NotNull String id){
         return null;
     }
-    public String  getWhiteList(@NotNull String id){
+    public String  getWhiteListProvider(@NotNull String id){
+        return null;
+    }
+    public String  getWhiteListReason(@NotNull String id){
+
         return null;
     }
     public String getReputation(@NotNull String id){
