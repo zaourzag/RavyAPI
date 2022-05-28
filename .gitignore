@@ -1,4 +1,4 @@
 out/
 .idea
-.src/main/java/com/luwuna/ravyapi/tmp.java
+src/main/java/com/luwuna/ravyapi/tmp.java
 *.class
