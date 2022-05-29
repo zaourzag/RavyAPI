@@ -35,5 +35,19 @@
             <id>jitpack</id>
             <url>https://jitpack.io</url>
         </repository>
+              <repository>
+            <id>maven-group</id>
+            <url>https://nexus.zakariao.nl/repository/mvn/</url>
+        </repository>
     </repositories>
+          <distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <url>https://nexus.zakariao.nl/repository/mvn-snap/</url>
+        </snapshotRepository>
+        <repository>
+            <id>nexus-releases</id>
+            <url>https://nexus.zakariao.nl/repository/mvn-rel/</url>
+        </repository>
+    </distributionManagement>
 </project>
